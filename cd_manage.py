@@ -34,7 +34,9 @@ def load_and_write_cd():
         artist = result["disc"]["release-list"][0]["artist-credit"][0]["artist"]["name"]
         date = result["disc"]["release-list"][0]["release-event-list"][0]["date"][:4]
         tracks = []
-        for
+        for x in range(result["disc"]["release-list"][0]["medium-list"][0]["track-count"]):
+            tracks.append(result["disc"]["release-list"][0]["medium-list"][0]["track-list"][x]["recording"]["title"])
+        print(f"Result:\nTitle: {title}\nArtist: {artist}\nDate: {date}\nTracks: {tracks}")
 
     except musicbrainzngs.musicbrainz.ResponseError:
         print("MusicBrainzからCDが見つかりませんでした。")
